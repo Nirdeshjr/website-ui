@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import MemberIndex from "@/components/BOD";
 
-const Blog = () => {
+const Bod = () => {
   const [showMembers, setShowMembers] = useState(false);
 
   return (
@@ -47,23 +47,23 @@ const Blog = () => {
             {/* Render member cards here */}
           </div>
         )}
-
-        {/* Render the link to navigate to the blog page */}
+{/* 
+        Render the link to navigate to the blog page
         <div className="text-center mt-8">
-          <Link href="/blog" passHref>
+          <Link href="/bod" passHref>
             <span
               className="text-primary font-medium underline cursor-pointer inline-block animate-pulse"
             >
               See other Board of Directors
             </span>
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   );
 };
 
-export default Blog;
+export default Bod;
 
 
 
