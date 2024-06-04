@@ -63,7 +63,6 @@ const Header = () => {
                   height={15}
                   className="h-f w-f object-cover dark:hidden"
 
-<<<<<<< HEAD
                 />
                 <Image
                   src="/images/logo/logo.png"
@@ -71,15 +70,6 @@ const Header = () => {
                   width={60}
                   height={15}
                   className="hidden h-f w-f object-cover dark:block"
-=======
-              <Image
-                src="/images/logo/dark-logo.png"
-                alt="dark logo"
-                width={40}
-                height={15}
-                className="h-f w-f dark:block light:hidden"
-              />
->>>>>>> 9bc8253a5483deb17987144e4011dedefa7fb66a
 
                 />
                 <h2>
