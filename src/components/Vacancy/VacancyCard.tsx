@@ -14,9 +14,13 @@ type VacancyCardProps = {
 };
 
 const VacancyCard: React.FC<VacancyCardProps> = ({ vacancy }) => {
+  const handleApplyClick = () => {
+    window.open("https://docs.google.com/forms/d/1dCcUap3ZJaTO5lGk7VnI3u8ZfIBQ8OhWTxa2lVKmLvM", "_blank");
+  };
+
   return (
     <div className="bg-gray-900 p-6 rounded-lg shadow-md text-white">
-      <p className="text-blue-400 mb-2">We&apos;re hiring</p>
+      <p className="text-blue-400 mb-2">We're hiring</p>
       <h2 className="text-3xl font-bold mb-2">{vacancy.job_title}</h2>
       <p className="text-lg mb-4">{vacancy.description}</p>
       <div className="flex items-center space-x-4 mb-6">
@@ -33,7 +37,10 @@ const VacancyCard: React.FC<VacancyCardProps> = ({ vacancy }) => {
           <span>Negotiable</span>
         </div>
       </div>
-      <button className="bg-gray-800 text-white py-2 px-4 rounded-md hover:bg-gray-700">
+      <button
+        className="bg-gray-800 text-white py-2 px-4 rounded-md hover:bg-gray-700"
+        onClick={handleApplyClick}
+      >
         Apply for this job
       </button>
       <p className="text-sm mt-4 text-gray-400">Closed on {vacancy.deadline}</p>
@@ -42,3 +49,4 @@ const VacancyCard: React.FC<VacancyCardProps> = ({ vacancy }) => {
 };
 
 export default VacancyCard;
+
