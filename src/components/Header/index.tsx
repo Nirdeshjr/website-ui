@@ -69,7 +69,7 @@ const Header = () => {
                 alt="dark logo"
                 width={40}
                 height={15}
-                className="h-f w-f dark:block"
+                className="h-f w-f dark:block light:hidden"
               />
 
                 <h2>
