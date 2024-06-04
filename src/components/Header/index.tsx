@@ -57,21 +57,21 @@ const Header = () => {
                 } `}
               >
                 <Image
-                src="/images/logo/light-logo.png"
-                alt="light logo"
-                width={40}
-                height={15}
-                className="h-f w-f dark:hidden"
-              />
+                  src="/images/logo/logo.png"
+                  alt="logo"
+                  width={40}
+                  height={15}
+                  className="h-f w-f object-cover dark:hidden"
 
-              <Image
-                src="/images/logo/dark-logo.png"
-                alt="dark logo"
-                width={40}
-                height={15}
-                className="h-f w-f dark:block"
-              />
+                />
+                <Image
+                  src="/images/logo/logo.png"
+                  alt="logo"
+                  width={60}
+                  height={15}
+                  className="hidden h-f w-f object-cover dark:block"
 
+                />
                 <h2>
                   <span className="text-blue-500">EDIT</span>
                   <span className="text-orange-500">Enterprises</span>
