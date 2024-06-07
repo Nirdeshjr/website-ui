@@ -8,7 +8,8 @@ import Features from "@/components/Features";
 import Hero from "@/components/Hero";
 import Testimonials from "@/components/Testimonials";
 import Video from "@/components/Video";
-import NoticeModal from "@/components/NoticeModal"; // Updated import statement
+import NoticeModal from "@/components/NoticeModal";
+import Gallery from "@/components/Gallery/ImageFilter"; // Updated import statement
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -26,7 +27,7 @@ export default function Home() {
       <Features />
       <Brands />
       <AboutSectionOne />
-      <Blog />
+      <Gallery />
       <Testimonials />
       <BOD/>
       <Contact />
