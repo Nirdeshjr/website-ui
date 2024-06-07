@@ -14,7 +14,8 @@ const ContactPage = () => {
     <>
       <Breadcrumb
         pageName="Contact Page"
-        description=" Please feel free to reach out to us using the contact form below, and one of our representatives will get back to you promptly. Your feedback and inquiries are invaluable to us as we strive to provide top-notch solutions tailored to your needs. Thank you for considering Edit Enterprises Company—we look forward to connecting with you soon!"
+        description="Whether you're a small startup or a large enterprise, Edit Enterprise is here to help you navigate the complex world of technology and unlock your full potential. Contact us today to learn more about our services and how we can support your business goals.
+At Edit Enterprise, we are more than just an IT company – we are your trusted partner in digital transformation. Let's embark on this journey together and shape the future of IT."
 
 
       />

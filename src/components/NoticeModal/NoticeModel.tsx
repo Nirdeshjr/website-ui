@@ -1,9 +1,30 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import NoticeModalProps from "@/types/noticemodal";
-import "./NoticeModal.css"; // Import CSS file for custom styles
+import axios from "axios";
 
-const NoticeModal: React.FC<NoticeModalProps> = ({ isOpen, onClose, noticeMessage, imageUrl }) => {
+const NoticeModal: React.FC<NoticeModalProps> = ({ isOpen, onClose }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [noticeData, setNoticeData] = useState<{ message: string; notice_image: string } | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchNoticeData = async () => {
+      try {
+        const response = await axios.get('http://127.0.0.1:8000/api/notice/');
+        console.log("Response from API:", response.data);
+        if (response.data.length > 0) {
+          setNoticeData(response.data[0]); // Set the first notice
+        }
+        setIsLoading(false);
+      } catch (error) {
+        console.error("Error while fetching notice data:", error);
+        setIsLoading(false);
+      }
+    };
+
+    fetchNoticeData();
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
@@ -11,12 +32,13 @@ const NoticeModal: React.FC<NoticeModalProps> = ({ isOpen, onClose, noticeMessag
       // Show the notice message with a delay to allow the animation to be visible
       setTimeout(() => {
         setIsVisible(true);
+        console.log("Notice message:", noticeData?.message);
       }, 100);
     } else {
       document.body.style.overflow = "auto";
       setIsVisible(false);
     }
-  }, [isOpen]);
+  }, [isOpen, noticeData]);
 
   const closeModal = () => {
     onClose();
@@ -24,12 +46,18 @@ const NoticeModal: React.FC<NoticeModalProps> = ({ isOpen, onClose, noticeMessag
 
   return (
     <div className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 ${isOpen ? "" : "hidden"}`}>
-      <div className="bg-black absolute inset-0 opacity-50"></div>
-      <div className="bg-white rounded-lg shadow-lg max-w-lg w-full mx-auto overflow-hidden relative">
-        {isOpen && (
+      <div className="absolute inset-0 bg-black opacity-50"></div>
+      <div className="relative bg-white rounded-lg shadow-lg max-w-lg w-full mx-auto overflow-hidden">
+        {isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-75 z-10">
+            <div className="w-12 h-12 border-4 border-t-4 border-t-blue-500 border-gray-200 rounded-full animate-spin"></div>
+          </div>
+        )}
+        {!isLoading  && isOpen && noticeData && (
+            
           <>
-            {imageUrl && (
-              <img src={imageUrl} alt="Notice" className="w-full h-auto max-h-96 object-cover" />
+            {noticeData.notice_image && (
+              <img src={noticeData.notice_image} alt="Notice" className="w-full h-auto max-h-96 object-cover" />
             )}
             <button className="absolute top-2 right-2 focus:outline-none z-10" onClick={closeModal}>
               <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-300 hover:bg-gray-400 transition-colors">
@@ -44,8 +72,8 @@ const NoticeModal: React.FC<NoticeModalProps> = ({ isOpen, onClose, noticeMessag
                 </svg>
               </div>
             </button>
-            <div className={`p-6 md:p-8 lg:p-10 overflow-y-auto max-h-80vh ${isVisible ? "visible" : ""}`}>
-              <p className={`text-lg lg:text-xl xl:text-2xl mb-6 ${isVisible ? "visible" : ""}`}>{noticeMessage}</p>
+            <div className={`p-6 md:p-8 lg:p-10 overflow-y-auto max-h-[80vh] ${isVisible ? "visible" : ""}`}>
+              <p className={`text-lg lg:text-xl xl:text-2xl mb-6 ${isVisible ? "visible" : ""}`}>{noticeData.message}</p>
               <button className="block w-full bg-primary text-white py-3 px-6 rounded-md text-center font-semibold hover:bg-primary-dark transition duration-300" onClick={closeModal}>
                 Close
               </button>
