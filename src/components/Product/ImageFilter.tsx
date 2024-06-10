@@ -55,7 +55,7 @@ const ImageFilter = () => {
               activeFilter === 'all' || activeFilter === item.name ? 'block' : 'hidden'
             }`}
           >
-            <Image className="rounded-t-lg w-full h-[200px] overflow-hidden" src={item.src} alt={item.name} objectFit="object-cover" />
+            <Image className="rounded-t-lg w-full h-[200px] overflow-hidden" src={item.gallery_image || "/images/about/team.gif"} alt={item.name} width={300} height={500}/>
             <div className="p-5">
               <Text as="h5" className="mb-2 text-2xl font-bold tracking-tight text-white">
                 {item.title}
