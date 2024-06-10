@@ -15,7 +15,7 @@ type VacancyCardProps = {
 
 const VacancyCard: React.FC<VacancyCardProps> = ({ vacancy }) => {
   const handleApplyClick = () => {
-    window.open("https://docs.google.com/forms/d/1dCcUap3ZJaTO5lGk7VnI3u8ZfIBQ8OhWTxa2lVKmLvM", "_blank");
+    window.open("https://docs.google.com/forms/d/1YT3OgR9eTx3Vl0ptznErpmWbNsVKrvvoQySGh_MC3W4/edit", "_blank");
   };
 
   return (
