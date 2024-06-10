@@ -1,25 +1,38 @@
 "use client";
-import { useState } from "react";
-import Button from "./Button";
-import { filterableData } from "@/productdata/FilterableData";
-import { Image } from "./Image";
-import { Text } from "./Text";
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import Button from './Button';
+import Image from 'next/image';
+import { Text } from './Text';
 
 const ImageFilter = () => {
-  const [activeFilter, setActiveFilter] = useState<string>('all');
+  const [filterableData, setFilterableData] = useState([]);
+  const [activeFilter, setActiveFilter] = useState('all');
 
   const buttonCaptions = ['all', 'app', 'website', 'software'];
 
-  const handleFilterClick = (filter: string) => {
+  const handleFilterClick = (filter) => {
     setActiveFilter(filter);
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://127.0.0.1:8000/api/product/');
+        const data = response.data;
+        setFilterableData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
-      
     <section className="w-full flex flex-col gap-12 py-16 lg:px-16 md:px-10 px-5">
-          <h1 className="text-center text-4xl font-bold mt-8 dark:text-white">Our Product</h1>
+      <h1 className="text-center text-4xl font-bold mt-8 dark:text-white">Our Product</h1>
       <div className="flex w-full md:justify-center items-start md:gap-6 gap-3 flex-wrap">
-        
         {buttonCaptions.map((filter) => (
           <Button
             key={filter}
@@ -42,7 +55,7 @@ const ImageFilter = () => {
               activeFilter === 'all' || activeFilter === item.name ? 'block' : 'hidden'
             }`}
           >
-            <Image className="rounded-t-lg w-full h-[200px] overflow-hidden" image={item.src} alt={item.name} objectCover="object-cover" />
+            <Image className="rounded-t-lg w-full h-[200px] overflow-hidden" src={item.src} alt={item.name} objectFit="object-cover" />
             <div className="p-5">
               <Text as="h5" className="mb-2 text-2xl font-bold tracking-tight text-white">
                 {item.title}
@@ -59,3 +72,4 @@ const ImageFilter = () => {
 };
 
 export default ImageFilter;
+
