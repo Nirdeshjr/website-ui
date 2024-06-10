@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import Button from "./Button";
-import { filterableData } from "@/data/FilterableData";
+import { filterableData } from "@/productdata/FilterableData";
 import { Image } from "./Image";
 import { Text } from "./Text";
 
@@ -17,7 +17,7 @@ const ImageFilter = () => {
   return (
       
     <section className="w-full flex flex-col gap-12 py-16 lg:px-16 md:px-10 px-5">
-          <h1 className="text-center text-4xl font-bold text-gray-800 mt-8">Our Products</h1>
+          <h1 className="text-center text-4xl font-bold mt-8 dark:text-white">Our Product</h1>
       <div className="flex w-full md:justify-center items-start md:gap-6 gap-3 flex-wrap">
         
         {buttonCaptions.map((filter) => (

@@ -9,7 +9,7 @@ import Hero from "@/components/Hero";
 import Testimonials from "@/components/Testimonials";
 import Video from "@/components/Video";
 import NoticeModal from "@/components/NoticeModal";
-import Gallery from "@/components/Gallery/ImageFilter"; // Updated import statement
+import Product from "@/components/Product/ImageFilter"; // Updated import statement
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -27,7 +27,7 @@ export default function Home() {
       <Features />
       <Brands />
       <AboutSectionOne />
-      <Gallery />
+      <Product />
       <Testimonials />
       <BOD/>
       <Contact />
