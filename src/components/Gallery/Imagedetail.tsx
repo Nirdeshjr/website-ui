@@ -8,7 +8,7 @@ import { Title } from "./Texts";
 const ImageFilter = () => {
   const [activeFilter, setActiveFilter] = useState<string>('all');
 
-  const buttonCaptions = ['all', 'app', 'website', 'software'];
+  const buttonCaptions = ['all', 'App', 'website', 'software'];
 
   const handleFilterClick = (filter: string) => {
     setActiveFilter(filter);
@@ -37,13 +37,13 @@ const ImageFilter = () => {
           <div
             key={index}
             className={`relative w-full cursor-pointer transition-all duration-200 rounded-lg shadow-lg overflow-hidden bg-white ${
-              activeFilter === 'all' || activeFilter === item.name ? 'block' : 'hidden'
+              activeFilter === 'all' || activeFilter === item.title ? 'block' : 'hidden'
             }`}
           >
-            <Img className="w-full h-[250px] overflow-hidden" image={item.src} alt={item.name} objectCover="object-cover" />
+            <Img className="w-full h-[250px] overflow-hidden" image={item.src} alt={item.title} objectCover="object-cover" />
             <div className="p-5">
               <Title as="h5" className="mb-2 text-2xl font-bold text-gray-800">
-                {item.title}
+                {item.name}
               </Title>
               <Title as="p" className="mb-3 text-gray-600">
                 {item.text}

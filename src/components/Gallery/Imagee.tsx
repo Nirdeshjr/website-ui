@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 type ImageOwnProps<T extends React.ElementType> = {
   className: string;
@@ -21,7 +22,7 @@ export const Img = <T extends React.ElementType = 'div'>({
   const Component = as || 'div';
   return (
     <Component className={className} {...rest}>
-      <img src={image} alt={alt} className={`w-full h-full ${objectCover}`} />
+      <Image src={image} alt={alt} className={`w-full h-full ${objectCover}`} />
     </Component>
   );
 };

@@ -9,7 +9,7 @@ const ImageFilter = () => {
   const [filterableData, setFilterableData] = useState([]);
   const [activeFilter, setActiveFilter] = useState('all');
 
-  const buttonCaptions = ['all', 'app', 'website', 'software'];
+  const buttonCaptions = ['all', 'Mobile App Development', 'Web Development', 'Software Development'];
 
   const handleFilterClick = (filter) => {
     setActiveFilter(filter);
@@ -52,13 +52,13 @@ const ImageFilter = () => {
           <div
             key={index}
             className={`w-full cursor-pointer transition-all duration-200 rounded-lg shadow bg-gray-800 border border-gray-600 ${
-              activeFilter === 'all' || activeFilter === item.name ? 'block' : 'hidden'
+              activeFilter === 'all' || activeFilter === item.title ? 'block' : 'hidden'
             }`}
           >
             <Image className="rounded-t-lg w-full h-[200px] overflow-hidden" src={item.gallery_image || "/images/about/team.gif"} alt={item.name} width={300} height={500}/>
             <div className="p-5">
               <Text as="h5" className="mb-2 text-2xl font-bold tracking-tight text-white">
-                {item.title}
+                {item.name}
               </Text>
               <Text as="p" className="mb-3 font-normal text-gray-400">
                 {item.text}
