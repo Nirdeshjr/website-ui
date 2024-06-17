@@ -1,60 +1,75 @@
 "use client";
-import { useState } from "react";
-import Button from "./Buttons";
-import { cardData } from "@/gallerydata/data";
-import { Img } from "./Imagee";
-import { Title } from "./Texts";
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
+import { Text } from '@/components/Gallery/Texts';
 
 const ImageFilter = () => {
-  const [activeFilter, setActiveFilter] = useState<string>('all');
+  const [galleryData, setGalleryData] = useState([]);
+  const [fullscreenImage, setFullscreenImage] = useState(null);
 
-  const buttonCaptions = ['all', 'App', 'website', 'software'];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://127.0.0.1:8000/api/gallery/');
+        const data = response.data;
+        setGalleryData(data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
 
-  const handleFilterClick = (filter: string) => {
-    setActiveFilter(filter);
+    fetchData();
+  }, []);
+
+  const handleImageClick = (src) => {
+    setFullscreenImage(src);
+  };
+
+  const closeFullscreenImage = () => {
+    setFullscreenImage(null);
   };
 
   return (
-    <section className="w-full flex flex-col gap-12 py-16 lg:px-16 md:px-10 px-5">
-      <h1 className="text-center text-4xl font-bold mt-8 dark:text-white">Our Gallery Highlights</h1>
-      <div className="flex w-full justify-center items-center gap-4 flex-wrap">
-        {buttonCaptions.map((filter) => (
-          <Button
-            key={filter}
-            onClick={() => handleFilterClick(filter)}
-            type="button"
-            className={`focus:outline-none border-2 border-blue-500 text-sm px-5 py-2.5 mb-2 capitalize transition-all duration-200 ${
-              activeFilter === filter ? 'bg-blue-500 text-white' : 'bg-white text-orange-500 hover:bg-blue-500 hover:text-white'
-            }`}
-          >
-            {filter === 'all' ? 'Show all' : filter}
-          </Button>
-        ))}
-      </div>
-      {/* Filtered cards display */}
-      <main className="w-full grid lg:grid-cols-3 md:grid-cols-2 gap-8 mt-8">
-        {cardData.map((item, index) => (
+    <section className="w-full flex flex-col gap-12 py-16 lg:px-16 md:px-10 px-5 bg-gray-100 dark:bg-gray-900">
+      <h1 className="text-center text-4xl font-bold mt-8 text-gray-900 dark:text-white">Our Gallery</h1>
+      <main className="w-full grid lg:grid-cols-3 md:grid-cols-2 gap-x-5 gap-y-8 md:mt-8">
+        {galleryData.map((item, index) => (
           <div
             key={index}
-            className={`relative w-full cursor-pointer transition-all duration-200 rounded-lg shadow-lg overflow-hidden bg-white ${
-              activeFilter === 'all' || activeFilter === item.title ? 'block' : 'hidden'
-            }`}
+            className="w-full cursor-pointer transition-all duration-200 rounded-lg shadow-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:shadow-2xl"
+            onClick={() => handleImageClick(item.image || "/images/about/team.gif")}
           >
-            <Img className="w-full h-[250px] overflow-hidden" image={item.src} alt={item.title} objectCover="object-cover" />
+            <div className="relative w-full h-60 overflow-hidden rounded-t-lg">
+              <Image
+                className="rounded-t-lg transform transition-transform duration-300 hover:scale-105"
+                src={item.image || "/images/about/team.gif"}
+                alt={item.name}
+                layout="fill"
+                objectFit="cover"
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-25 rounded-t-lg"></div>
+            </div>
             <div className="p-5">
-              <Title as="h5" className="mb-2 text-2xl font-bold text-gray-800">
+              <Text as="h5" className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 {item.name}
-              </Title>
-              <Title as="p" className="mb-3 text-gray-600">
+              </Text>
+              <Text as="p" className="mb-3 font-normal text-gray-600 dark:text-gray-400">
                 {item.text}
-              </Title>
+              </Text>
             </div>
           </div>
         ))}
       </main>
+      {fullscreenImage && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75" onClick={closeFullscreenImage}>
+          <img src={fullscreenImage} alt="Fullscreen" className="max-w-full max-h-full" />
+        </div>
+      )}
     </section>
   );
 };
 
 export default ImageFilter;
+
 

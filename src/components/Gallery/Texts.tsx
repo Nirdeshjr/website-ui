@@ -12,7 +12,7 @@ type TextOwnProps<E extends React.ElementType> = {
 type TextProps<E extends React.ElementType> = TextOwnProps<E> & Omit<React.ComponentPropsWithoutRef<E>, keyof TextOwnProps<E>>;
 
 // Define the Title component with a default element type of 'div'
-export const Title = <E extends React.ElementType = 'div'>({ className, children, as }: TextProps<E>) => {
+export const Text = <E extends React.ElementType = 'div'>({ className, children, as }: TextProps<E>) => {
   const Component = as || 'div';
   return (
     <Component className={className}>
