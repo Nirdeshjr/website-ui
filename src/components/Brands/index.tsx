@@ -8,7 +8,7 @@ const Brands = () => {
     <section>
       <div className="container mb-24">
         <div className="flex flex-col items-center justify-center">
-        <SectionTitle title="Our Working Patners" paragraph="Trusted by them over a year."/>
+        <SectionTitle title="Our Working Patners" paragraph="Trusted by them over a year." center/>
         </div>
         <div className="-my-12 flex flex-wrap">
           <div className="w-full px-4">

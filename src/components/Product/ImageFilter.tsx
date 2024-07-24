@@ -38,9 +38,8 @@ const ImageFilter = () => {
             key={filter}
             onClick={() => handleFilterClick(filter)}
             type="button"
-            className={`focus:outline-none border-2 border-purple-600 hover:bg-purple-700 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 capitalize ${
-              activeFilter === filter ? 'bg-purple-600' : ''
-            }`}
+            className={`focus:outline-none border-2 border-purple-600 hover:bg-purple-700 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 capitalize ${activeFilter === filter ? 'bg-purple-600' : ''
+              }`}
           >
             {filter === 'all' ? 'Show all' : filter}
           </Button>
@@ -51,11 +50,16 @@ const ImageFilter = () => {
         {filterableData.map((item, index) => (
           <div
             key={index}
-            className={`w-full cursor-pointer transition-all duration-200 rounded-lg shadow bg-gray-800 border border-gray-600 ${
-              activeFilter === 'all' || activeFilter === item.title ? 'block' : 'hidden'
-            }`}
+            className={`w-full cursor-pointer transition-all duration-200 rounded-lg shadow bg-gray-800 border border-gray-600 ${activeFilter === 'all' || activeFilter === item.title ? 'block' : 'hidden'
+              }`}
           >
-            <Image className="rounded-t-lg w-full h-[200px] overflow-hidden" src={item.gallery_image} alt={item.name} width={300} height={500}/>
+            <Image
+              className="w-full h-40 object-cover mb-3 rounded-t-lg"
+              src={item.product_image || "/Images/course.png"}
+              alt="Bonnie image"
+              width={90}
+              height={70}
+            />
             <div className="p-5">
               <Text as="h5" className="mb-2 text-2xl font-bold tracking-tight text-white">
                 {item.name}

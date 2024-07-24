@@ -49,36 +49,33 @@ const Header = () => {
       >
         <div className="container">
           <div className="relative -mx-4 flex items-center justify-between">
-            <div className="w-40 md:w-48 lg:w-60 max-w-full px-4 xl:mr-12">
+          <div className="w-60 max-w-full px-4 xl:mr-12 flex items-center justify-between">
               <Link
                 href="/"
-                className={`header-logo block w-full ${
-                  sticky ? "py-5 lg:py-2" : "py-8"
-                } `}
+                className={`header-logo block w-full ${sticky ? "py-5 lg:py-2" : "py-8"
+                  } `}
               >
                 <Image
-                  src="/images/logo/logo.png"
+                  src="/images/logo/light-logo.png"
                   alt="logo"
-                  width={40}
-                  height={15}
-                  className="h-f w-f object-cover dark:hidden"
-
+                  width={50}
+                  height={5}
+                  className="dark:hidden"
                 />
                 <Image
-                  src="/images/logo/logo.png"
+                  src="/images/logo/dark-logo.png"
                   alt="logo"
-                  width={60}
-                  height={15}
-                  className="hidden h-f w-f object-cover dark:block"
-
+                  width={50}
+                  height={5}
+                  className="hidden dark:block"
                 />
-                <h2>
-                  <span className="text-blue-500">EDIT</span>
-                  <span className="text-orange-500">Enterprises</span>
-                  
-                </h2>
-
               </Link>
+              <div className="com_name">
+                  <h2>
+                    <span className="text-blue-500">eDIT</span>
+                    <span className="text-orange-500">&nbsp;Enterprises</span>
+                  </h2>
+                </div>
             </div>
             <div className="flex w-full items-center justify-between px-4">
               <div>
