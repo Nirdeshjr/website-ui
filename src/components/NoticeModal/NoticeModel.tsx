@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import NoticeModalProps from "@/types/noticemodal";
 import axios from "axios";
+import Image from "next/image";
 
 const NoticeModal: React.FC<NoticeModalProps> = ({ isOpen, onClose }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -53,11 +54,18 @@ const NoticeModal: React.FC<NoticeModalProps> = ({ isOpen, onClose }) => {
             <div className="w-12 h-12 border-4 border-t-4 border-t-blue-500 border-gray-200 rounded-full animate-spin"></div>
           </div>
         )}
-        {!isLoading  && isOpen && noticeData && (
-            
+        {!isLoading && isOpen && noticeData && (
+
           <>
             {noticeData.notice_image && (
-              <img src={noticeData.notice_image} alt="Notice" className="w-full h-auto max-h-96 object-cover" />
+              <Image
+                src={noticeData.notice_image}
+                alt="Notice"
+                layout="responsive"
+                width={500}
+                height={300}
+                className="object-cover"
+              />
             )}
             <button className="absolute top-2 right-2 focus:outline-none z-10" onClick={closeModal}>
               <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-300 hover:bg-gray-400 transition-colors">
@@ -73,7 +81,7 @@ const NoticeModal: React.FC<NoticeModalProps> = ({ isOpen, onClose }) => {
               </div>
             </button>
             <div className={`p-6 md:p-8 lg:p-10 overflow-y-auto max-h-[80vh] ${isVisible ? "visible" : ""}`}>
-              <p className={`text-lg lg:text-xl xl:text-2xl mb-6 ${isVisible ? "visible" : ""}`}>{noticeData.message}</p>
+              <p className={`text-lg lg:text-xl xl:text-2xl mb-6 ${isVisible ? "visible" : ""} dark:text-black`}>{noticeData.message}</p>
               <button className="block w-full bg-primary text-white py-3 px-6 rounded-md text-center font-semibold hover:bg-primary-dark transition duration-300" onClick={closeModal}>
                 Close
               </button>

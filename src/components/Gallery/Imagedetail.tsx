@@ -63,7 +63,14 @@ const ImageFilter = () => {
       </main>
       {fullscreenImage && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75" onClick={closeFullscreenImage}>
-          <img src={fullscreenImage} alt="Fullscreen" className="max-w-full max-h-full" />
+          <Image
+            src={fullscreenImage}
+            alt="Fullscreen"    
+            layout="responsive"         
+            width={500}                  
+            height={300}                 
+            className="object-cover" 
+          />
         </div>
       )}
     </section>

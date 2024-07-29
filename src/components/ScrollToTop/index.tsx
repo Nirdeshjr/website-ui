@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
@@ -67,14 +68,17 @@ export default function ScrollToTop() {
               <span className="mt-[6px] h-3 w-3 rotate-45 border-l border-t border-white"></span>
             </div>
             <div className="relative flex items-center justify-center">
-              <img
+              <Image
                 onClick={toggleModal}
-                src="/images/logo/vacancy.jpeg" // Placeholder image URL; replace with the actual vacancy photo URL
-                alt="Vacancy"
-                className="rounded-full w-12 h-12 object-cover blink cursor-pointer" 
+                src="/images/logo/vacancy.jpeg"  
+                alt="Vacancy"     
+                layout="responsive"          
+                width={100}                 
+                height={50}          
+                className="rounded-full w-12 h-12 object-cover blink cursor-pointer"
               />
               {isModalOpen && (
-                <div className="absolute right-16 z-[100] flex items-center justify-center bg-black bg-opacity-50" style={{bottom: '-26.7px'}}>
+                <div className="absolute right-16 z-[100] flex items-center justify-center bg-black bg-opacity-50" style={{ bottom: '-26.7px' }}>
                   <div className="bg-white rounded-lg p-6 lg:w-96 w-56 relative">
                     <button
                       onClick={dismissModal}
