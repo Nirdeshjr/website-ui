@@ -20,7 +20,7 @@ const VacancyCard: React.FC<VacancyCardProps> = ({ vacancy }) => {
 
   return (
     <div className="bg-gray-900 p-6 rounded-lg shadow-md text-white">
-      <p className="text-blue-400 mb-2">We're hiring</p>
+      <p className="text-blue-400 mb-2">We&apos;re hiring</p>
       <h2 className="text-3xl font-bold mb-2">{vacancy.job_title}</h2>
       <p className="text-lg mb-4">{vacancy.description}</p>
       <div className="flex items-center space-x-4 mb-6">
@@ -49,4 +49,5 @@ const VacancyCard: React.FC<VacancyCardProps> = ({ vacancy }) => {
 };
 
 export default VacancyCard;
+
 
