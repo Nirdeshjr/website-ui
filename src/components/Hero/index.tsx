@@ -7,7 +7,7 @@ import BackgroundVideo from './backgroundvideo';
 const Hero = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [hideVideo, setHideVideo] = useState(false);
-  const [showContent, setShowContent] = useState(false);
+  const [video, setVideo] = useState('/images/video/video.mp4');
 
   const videoSrc = {
     video1: '/images/video/video.mp4',
@@ -19,25 +19,29 @@ const Hero = () => {
       const screenWidth = window.innerWidth;
       if (screenWidth < 768) {
         setIsVisible(false);
-        // Set a timeout to hide the video and show the content after 7 seconds
-        const timer = setTimeout(() => {
-          setShowContent(true);
-          setHideVideo(true);
-        }, 7000);
-
-        return () => clearTimeout(timer);
+        setVideo(videoSrc.video1);
       } else {
         setIsVisible(true);
-        setShowContent(true);
-        setHideVideo(false);
+        setVideo(videoSrc.video2);
       }
     };
 
     updateVideoBasedOnScreenWidth();
     window.addEventListener('resize', updateVideoBasedOnScreenWidth);
 
-    return () => window.removeEventListener('resize', updateVideoBasedOnScreenWidth);
-  }, []);
+    const timer = setTimeout(() => {
+      setHideVideo(true);
+    }, 5000);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', updateVideoBasedOnScreenWidth);
+    };
+  }, [videoSrc.video1, videoSrc.video2]);
+
+  const heroStyle = {
+    marginTop: isVisible ? '80px' : '0',
+  };
 
   return (
     <>
@@ -47,45 +51,47 @@ const Hero = () => {
       >
         <div className="container relative flex flex-col md:flex-row">
           {/* Left half: Video */}
-          {!hideVideo && (
+          {isVisible ? (
             <div className="w-full md:w-8/12">
-              <div className="w-full h-0 relative" style={{ paddingBottom: '56.25%' }}>
-                <BackgroundVideo video={videoSrc.video1} className="absolute inset-0 w-full h-full" />
+              <div className="w-full h-full max-w-[900px]">
+                <BackgroundVideo video={videoSrc.video1} />
+              </div>
+            </div>
+          ) : (
+            <div className={`w-full md:w-8/12 ${hideVideo ? "hidden" : "block"}`}>
+              <div className="w-full h-full max-w-[900px]">
+                <BackgroundVideo video={videoSrc.video2} />
               </div>
             </div>
           )}
-
           {/* Right half: Welcome content */}
-          {showContent && (
-            <div className="w-full md:w-4/12 px-4 py-12 md:py-0 flex items-center" style={isVisible ? null : { marginTop: '10px' }}>
-              <div className="mx-auto max-w-[800px] text-center">
-                <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight animate__animated animate__slideInRight transition duration-500 ease-in-out">
-                  Welcome To&nbsp;
-                  <span className="text-blue-500">EDIT</span> <span className="text-orange-500">Enterprises</span>
-                </h1>
+          <div className="w-full md:w-4/12 px-4 py-12 md:py-0 flex items-center" style={isVisible ? null : { marginTop: '80px' }}>
+            <div className="mx-auto max-w-[800px] text-center">
+              <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight animate__animated animate__slideInRight transition duration-500 ease-in-out">
+                Welcome To&nbsp;
+                <span className="text-blue-500">EDIT</span> <span className="text-orange-500">Enterprises</span>
+              </h1>
 
-                <p className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl animate__animated animate__fadeInUp">
-                  where technology meets innovation, and solutions are crafted with precision.
-                </p>
-                <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
-                  <Link
-                    href="/vacancy"
-                    className="rounded-sm bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
-                  >
-                    Join Us
-                  </Link>
-                  <Link
-                    href="/contact"
-                    className="inline-block rounded-sm bg-black px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-black/90 dark:bg-white/10 dark:text-white dark:hover:bg-white/5"
-                  >
-                    Contact Us
-                  </Link>
-                </div>
+              <p className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl animate__animated animate__fadeInUp">
+                where technology meets innovation, and solutions are crafted with precision.
+              </p>
+              <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+                <Link 
+                  href="/vacancy"
+                  className="rounded-sm bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-primary/80"
+                >
+                  Join Us
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-block rounded-sm bg-black px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-black/90 dark:bg-white/10 dark:text-white dark:hover:bg-white/5"
+                >
+                  Contact Us
+                </Link>
               </div>
             </div>
-          )}
+          </div>
         </div>
-
         <div className="absolute right-0 top-0 z-[-1] opacity-30 lg:opacity-100">
           <svg
             width="450"
@@ -230,3 +236,12 @@ const Hero = () => {
 };
 
 export default Hero;
+
+
+
+
+
+
+
+
+

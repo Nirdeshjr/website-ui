@@ -1,15 +1,10 @@
 import React from 'react';
 
-interface BackgroundVideoProps {
-  video: string;
-  className?: string; // Add className prop
-}
-
-const BackgroundVideo = ({ video, className }: BackgroundVideoProps) => {
+const BackgroundVideo = ({ video }) => {
   return (
-    <div className={`absolute inset-0 overflow-hidden z-0 ${className}`}>
+    <div className="absolute inset-0 overflow-hidden z-0">
       <video
-        className="w-full h-full object-cover"
+        className="w-full h-screen object-cover md:w-8/12 md:h-auto"
         autoPlay
         loop
         muted
