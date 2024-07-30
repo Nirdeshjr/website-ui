@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useState } from "react";
 import NoticeModalProps from "@/types/noticemodal";
 import axios from "axios";
@@ -11,7 +10,7 @@ const NoticeModal: React.FC<NoticeModalProps> = ({ isOpen, onClose }) => {
   useEffect(() => {
     const fetchNoticeData = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/notice/');
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/notice/`);
         console.log("Response from API:", response.data);
         if (response.data.length > 0) {
           setNoticeData(response.data[0]); // Set the first notice
