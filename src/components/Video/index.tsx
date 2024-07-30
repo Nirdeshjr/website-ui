@@ -56,7 +56,7 @@ const About = () => {
                 <Image
                   src="/images/video/video1.gif"
                   alt="Animation"
-                  className="mx-auto drop-shadow-three"
+                  className="mx-auto drop-shadow-three dark:hidden"
                   width={500}
                   height={600}
                 />
@@ -64,8 +64,8 @@ const About = () => {
                   src="/images/video/video1.gif"
                   alt="Animation"
                   className="mx-auto hidden drop-shadow-three dark:block lg:mr-0"
-                  width={400}
-                  height={400}
+                  width={500}
+                  height={600}
                 />
               </div>
             </div>
