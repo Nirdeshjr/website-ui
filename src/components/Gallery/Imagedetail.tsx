@@ -11,7 +11,7 @@ const ImageFilter = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/gallery/');
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/gallery/`);
         const data = response.data;
         setGalleryData(data);
       } catch (error) {
@@ -78,5 +78,6 @@ const ImageFilter = () => {
 };
 
 export default ImageFilter;
+
 
 

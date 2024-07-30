@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import NoticeModalProps from "@/types/noticemodal";
 import axios from "axios";
@@ -28,7 +30,6 @@ const NoticeModal: React.FC<NoticeModalProps> = ({ isOpen, onClose }) => {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
-      // Show the notice message with a delay to allow the animation to be visible
       setTimeout(() => {
         setIsVisible(true);
         console.log("Notice message:", noticeData?.message);
@@ -37,7 +38,7 @@ const NoticeModal: React.FC<NoticeModalProps> = ({ isOpen, onClose }) => {
       document.body.style.overflow = "auto";
       setIsVisible(false);
     }
-  }, [isOpen, noticeData]);
+  }, [isOpen]);
 
   const closeModal = () => {
     onClose();
@@ -52,8 +53,7 @@ const NoticeModal: React.FC<NoticeModalProps> = ({ isOpen, onClose }) => {
             <div className="w-12 h-12 border-4 border-t-4 border-t-blue-500 border-gray-200 rounded-full animate-spin"></div>
           </div>
         )}
-        {!isLoading  && isOpen && noticeData && (
-            
+        {!isLoading && noticeData && (
           <>
             {noticeData.notice_image && (
               <img src={noticeData.notice_image} alt="Notice" className="w-full h-auto max-h-96 object-cover" />
@@ -85,6 +85,7 @@ const NoticeModal: React.FC<NoticeModalProps> = ({ isOpen, onClose }) => {
 };
 
 export default NoticeModal;
+
 
 
 
