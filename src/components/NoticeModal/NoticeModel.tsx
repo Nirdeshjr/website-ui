@@ -12,9 +12,12 @@ const NoticeModal: React.FC<NoticeModalProps> = ({ isOpen, onClose }) => {
   useEffect(() => {
     const fetchNoticeData = async () => {
       try {
-        const response = await axios.get(`'https://website-ui-otsh.onrender.com/api/notice'`);
+        // Corrected URL without single quotes
+        const response = await axios.get('https://website-ui-otsh.onrender.com/api/notice');
         console.log("Response from API:", response.data); // Debugging: Check the API response
-        if (response.data.length > 0) {
+        
+        // Ensure response.data is an array and handle empty data
+        if (response.data && Array.isArray(response.data) && response.data.length > 0) {
           setNoticeData(response.data[0]); // Set the first notice
         } else {
           setNoticeData(null); // No notice data available
@@ -87,6 +90,7 @@ const NoticeModal: React.FC<NoticeModalProps> = ({ isOpen, onClose }) => {
 };
 
 export default NoticeModal;
+
 
 
 
