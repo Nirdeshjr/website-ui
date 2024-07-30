@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import NoticeModalProps from "@/types/noticemodal";
 import axios from "axios";
+import NoticeModalProps from "@/types/noticemodal";
 
 const NoticeModal: React.FC<NoticeModalProps> = ({ isOpen, onClose }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -13,9 +13,11 @@ const NoticeModal: React.FC<NoticeModalProps> = ({ isOpen, onClose }) => {
     const fetchNoticeData = async () => {
       try {
         const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/notice/`);
-        console.log("Response from API:", response.data);
+        console.log("Response from API:", response.data); // Debugging: Check the API response
         if (response.data.length > 0) {
           setNoticeData(response.data[0]); // Set the first notice
+        } else {
+          setNoticeData(null); // No notice data available
         }
         setIsLoading(false);
       } catch (error) {
@@ -32,13 +34,13 @@ const NoticeModal: React.FC<NoticeModalProps> = ({ isOpen, onClose }) => {
       document.body.style.overflow = "hidden";
       setTimeout(() => {
         setIsVisible(true);
-        console.log("Notice message:", noticeData?.message);
+        console.log("Notice message:", noticeData?.message); // Debugging: Check notice message
       }, 100);
     } else {
       document.body.style.overflow = "auto";
       setIsVisible(false);
     }
-  }, [isOpen]);
+  }, [isOpen, noticeData]);
 
   const closeModal = () => {
     onClose();
@@ -71,8 +73,8 @@ const NoticeModal: React.FC<NoticeModalProps> = ({ isOpen, onClose }) => {
                 </svg>
               </div>
             </button>
-            <div className={`p-6 md:p-8 lg:p-10 overflow-y-auto max-h-[80vh] ${isVisible ? "visible" : ""}`}>
-              <p className={`text-lg lg:text-xl xl:text-2xl mb-6 ${isVisible ? "visible" : ""}`}>{noticeData.message}</p>
+            <div className={`p-6 md:p-8 lg:p-10 overflow-y-auto max-h-[80vh] ${isVisible ? "" : "hidden"}`}>
+              <p className={`text-lg lg:text-xl xl:text-2xl mb-6 ${isVisible ? "" : "hidden"}`}>{noticeData.message}</p>
               <button className="block w-full bg-primary text-white py-3 px-6 rounded-md text-center font-semibold hover:bg-primary-dark transition duration-300" onClick={closeModal}>
                 Close
               </button>
@@ -85,6 +87,7 @@ const NoticeModal: React.FC<NoticeModalProps> = ({ isOpen, onClose }) => {
 };
 
 export default NoticeModal;
+
 
 
 
