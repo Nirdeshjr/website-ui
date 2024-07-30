@@ -1,4 +1,6 @@
-import Image from "next/image";
+"use client";
+import React from 'react';
+import Image from 'next/image';
 import SectionTitle from "../Common/SectionTitle";
 
 const checkIcon = (
@@ -51,15 +53,19 @@ const About = () => {
 
             <div className="w-full px-4 lg:w-1/2">
               <div className="relative mx-auto max-w-[500px] lg:mr-0">
-                <img
+                <Image
                   src="/images/video/video1.gif"
                   alt="Animation"
-                  className="mx-auto max-w-full drop-shadow-three dark:hidden dark:drop-shadow-none lg:mr-0 w-[500px] h-[600px]" // Adjust the width and height as needed
+                  className="mx-auto drop-shadow-three"
+                  width={500}
+                  height={600}
                 />
-                <img
+                <Image
                   src="/images/video/video1.gif"
                   alt="Animation"
-                  className="mx-auto hidden max-w-full drop-shadow-three dark:block dark:drop-shadow-none lg:mr-0 w-[400px] h-[400px]" // Adjust the width and height as needed
+                  className="mx-auto hidden drop-shadow-three dark:block lg:mr-0"
+                  width={400}
+                  height={400}
                 />
               </div>
             </div>
