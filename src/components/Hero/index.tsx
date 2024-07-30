@@ -37,11 +37,13 @@ const Hero = () => {
       clearTimeout(timer);
       window.removeEventListener('resize', updateVideoBasedOnScreenWidth);
     };
-  }, [videoSrc.video1, videoSrc.video2]); // Include videoSrc.video1 and videoSrc.video2
+  }, []);
 
   const heroStyle = {
     marginTop: isVisible ? '80px' : '0',
   };
+
+
 
   return (
     <>
@@ -339,3 +341,11 @@ const Hero = () => {
 };
 
 export default Hero;
+
+
+
+
+
+
+
+

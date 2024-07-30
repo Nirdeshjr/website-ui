@@ -1,12 +1,7 @@
-export type Vacancies={
+export type Vacancy = {
     id: number;
-    job_title: string;
-    location: string,
-    position_type: string,
-    no_experience: number,
-    company_overview: string,
-    deadline: string,
-    no_of_hiring: number,
-    description: string,
-    vacancy_image: File | null,
-}
+    title: string;
+    description: string;
+    key:number;
+    // Add more properties as needed
+};  

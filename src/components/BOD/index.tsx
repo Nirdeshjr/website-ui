@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react';
-import Image from 'next/image';
+import Link from 'next/link';
+import MemberIndex from "@/components/BOD";
 
 const Bod = () => {
   const [showMembers, setShowMembers] = useState(false);
@@ -10,28 +11,21 @@ const Bod = () => {
       id="blog"
       className="relative bg-gradient-to-b from-gray-light to-gray-dark dark:bg-gradient-to-b from-bg-color-light to-bg-color-dark py-16 md:py-20 lg:py-28 rounded-t-3xl mt-8 "
     >
-      <video
+      <video 
         className="absolute top-0 left-0 w-full h-full object-cover"
-        src="/images/video/second.mp4"
-        autoPlay
-        loop
-        muted
+        src="/images/video/second.mp4" 
+        autoPlay 
+        loop 
+        muted 
       ></video>
-
+      
       <div className="absolute top-0 left-0 w-full h-full bg-black opacity-50"></div> {/* Overlay to darken the video */}
-
+      
       <div className="relative container flex flex-col justify-center items-center">
         <div className="w-full">
           <div className="flex justify-center mb-8">
             <div className="w-32 h-32 bg-gray-200 rounded-full overflow-hidden flex items-center justify-center">
-              <Image
-                src="/images/logo/logo.png"
-                alt="CEO and Co-founder"
-                layout="responsive"
-                width={500}
-                height={300}
-                className="object-cover"
-              />
+              <img className="object-cover w-full h-full" src="/images/logo/logo.png" alt="CEO and Co-founder" />
             </div>
           </div>
           <div className="text-center">
@@ -53,7 +47,7 @@ const Bod = () => {
             {/* Render member cards here */}
           </div>
         )}
-        {/* 
+{/* 
         Render the link to navigate to the blog page
         <div className="text-center mt-8">
           <Link href="/bod" passHref>

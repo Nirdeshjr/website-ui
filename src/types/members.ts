@@ -1,11 +1,11 @@
-export interface Members {
-  id: number;
-  member_name: string;
-  position: string;
-  salary: number;
-  status: string;  
-  phone: string;
-  working_days: number;  
-  member_profile: string;  
-  description: string;
-}
+export type Members = {
+    id: number;
+    name: string;
+    detail: string;
+    position: string;
+    image: string;
+    fblink: string;
+    instalink: string;
+    linkedinlink: string; 
+  };
+  
