@@ -9,7 +9,7 @@ const YourComponent = () => {
   const [vacancyData, setVacancyData] = useState<Vacancy[]>([]);
 
   const getData = () => {
-    axios.get("http://127.0.0.1:8000/api/vacancy/")
+    axios.get("https://backend-4c5c.onrender.com/api/vacancy/")
       .then(response => {
         const fetchData = response.data;
         setVacancyData(fetchData);

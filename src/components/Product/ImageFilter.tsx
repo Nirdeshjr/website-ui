@@ -18,7 +18,7 @@ const ImageFilter = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/product/');
+        const response = await axios.get('https://backend-4c5c.onrender.com/api/product/');
         const data = response.data;
         setFilterableData(data);
       } catch (error) {
