@@ -19,9 +19,9 @@ const AboutSectionOne = () => {
           title="Our Organization Process Workflow"
           paragraph="Since 2015, our organization team accelerates digital transformation for clients across industries. We employ a streamlined four-step process, ensuring swift, impactful solutions."
           center={true}
-          className="custom-class"
-          mb="8"
-          width="full"
+          className="custom-class" // Example of adding a custom class
+          mb="8" // Adjust margin bottom
+          width="full" // Adjust width to full
         />
         <div className="flex flex-col md:flex-row justify-between items-center relative">
           {['Analyze', 'Strategize', 'Implement', 'Monitor'].map((step, index) => (

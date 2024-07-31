@@ -19,7 +19,7 @@
     "axios": "^1.7.2",
     "ckeditor5": "^42.0.2",
     "framer-motion": "^11.3.19",
-    "next": "^14.2.3",
+    "next": "^14.2.5",
     "next-themes": "^0.2.1",
     "react": "^18.3.1",
     "react-circular-progressbar": "^2.1.0",
@@ -46,3 +46,4 @@
     "typescript": "5.4.5"
   }
 }
+
