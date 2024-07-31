@@ -1,4 +1,4 @@
-import { Feature } from "@/types/feature";
+import { Feature } from "src/types/feature";
 import { VscServerProcess } from "react-icons/vsc";
 import { TbWorld } from "react-icons/tb";
 import { MdOutlineUsb } from "react-icons/md";
