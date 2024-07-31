@@ -6,7 +6,7 @@ import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa6";
 import { useRouter } from 'next/navigation';
 
 const BodCard = ({ member }: { member: Members }) => {
-  const { name, detail, position, image } = member;
+  const { member_name, description, position, member_profile } = member;
   const router = useRouter();
   const handleClick = (redirect: string) =>{
     router.push(redirect);
@@ -17,8 +17,8 @@ const BodCard = ({ member }: { member: Members }) => {
       <div className="relative w-full h-48 md:h-64">
         <Image
           className="object-cover w-full h-full"
-          src={image}
-          alt={name}
+          src={member_profile}
+          alt={member_name}
           layout="fill"
         />
       </div>
@@ -28,12 +28,12 @@ const BodCard = ({ member }: { member: Members }) => {
             onClick={() => handleClick('/Members')}
             className="hover:text-indigo-600 transition duration-500 ease-in-out hover:cursor-pointer"
           >
-            {name}
+            {member_name}
           </a>
         </div>
         <h3 className="text-sm md:text-base">{position}</h3>
         <p className="text-gray-500 text-xs md:text-sm">
-          {detail}
+          {description}
         </p>
       </div>
       <div className="px-8 py-3 flex flex-row items-center justify-center bg-gray-100">
