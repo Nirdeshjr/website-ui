@@ -18,6 +18,7 @@
     "@mui/material": "^5.16.5",
     "axios": "^1.7.2",
     "ckeditor5": "^42.0.2",
+    "framer-motion": "^11.3.19",
     "next": "^14.2.3",
     "next-themes": "^0.2.1",
     "react": "^18.3.1",
