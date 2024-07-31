@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import Image from 'next/image';
-import { Members } from '@/types/members';
+import { Members } from 'src/types/members';
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa6";
 import { useRouter } from 'next/navigation';
 
