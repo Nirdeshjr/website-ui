@@ -1,7 +1,6 @@
 "use client";
-import TagButton from "@/components/Blog/TagButton";
 import Image from "next/image";
-import SharePost from "@/components/Blog/SharePost";
+
 
 const BlogDetailsPage = () => {
   return (
@@ -276,9 +275,6 @@ const BlogDetailsPage = () => {
                       <h5 className="mb-4 text-base font-medium text-body-color sm:text-right">
                         Share this post :
                       </h5>
-                      <div className="flex items-center sm:justify-end">
-                        <SharePost />
-                      </div>
                     </div>
                   </div>
                 </div>
