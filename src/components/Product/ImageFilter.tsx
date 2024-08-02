@@ -27,7 +27,7 @@ const ImageFilter = () => {
         const response = await axios.get('https://backend-4c5c.onrender.com/api/product/');
         const data = response.data;
         setFilterableData(data);
-        setDisplayedData(data.slice(0, 3)); // Display only first 2 items initially
+        setDisplayedData(data.slice(0, 3)); // Display only first 3 items initially
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -37,15 +37,15 @@ const ImageFilter = () => {
   }, []);
 
   return (
-    <section className="w-full flex flex-col gap-12 py-16 lg:px-16 md:px-10 px-5">
-      <h1 className="text-center text-4xl font-bold mt-8 dark:text-white">Our Product</h1>
+    <section className="w-full flex flex-col gap-12 py-16 lg:px-16 md:px-10 px-5 bg-gray-100 dark:bg-gray-900">
+      <h1 className="text-center text-4xl font-bold mt-8 text-gray-900 dark:text-white">Our Product</h1>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-8 w-full md:justify-center items-start">
         {buttonCaptions.map((filter) => (
           <Button
             key={filter}
             onClick={() => handleFilterClick(filter)}
             type="button"
-            className={`focus:outline-none border-2 border-purple-600 hover:bg-purple-700 font-medium rounded-lg text-sm px-5 py-2.5 capitalize ${activeFilter === filter ? 'bg-purple-600' : ''
+            className={`focus:outline-none border-2 border-black hover:bg-blue-500 hover:border-blue-500 text-black hover:text-white font-medium rounded-lg text-sm px-5 py-2.5 capitalize ${activeFilter === filter ? 'bg-blue-500 text-white border-blue-500' : 'text-black'
               }`}
           >
             {filter === 'all' ? 'Show all' : filter}
@@ -57,21 +57,22 @@ const ImageFilter = () => {
         {displayedData.map((item, index) => (
           <div
             key={index}
-            className={`w-full cursor-pointer transition-all duration-200 rounded-lg shadow bg-gray-800 border border-gray-600 ${activeFilter === 'all' || activeFilter === item.title ? 'block' : 'hidden'
-              }`}
+            className="w-full cursor-pointer transition-transform transform hover:scale-105 rounded-lg shadow-lg border dark:border-gray-700 bg-white dark:bg-gray-800"
           >
-            <Image
-              src={item.product_image || "/images/logo/dark-logo.png"}
-              alt="Product"
-              width={90}
-              height={70}
-              className="w-full h-40 object-cover mb-3 rounded-t-lg"
-            />
+            <div className="relative w-full h-60 overflow-hidden rounded-t-lg">
+              <Image
+                src={item.product_image || "/images/logo/dark-logo.png"}
+                alt="Product"
+                layout="fill"
+                className="object-cover transition-transform duration-300 ease-in-out transform hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black bg-opacity-25 rounded-t-lg"></div>
+            </div>
             <div className="p-5">
-              <Text as="h5" className="mb-2 text-2xl font-bold tracking-tight text-white">
+              <Text as="h5" className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                 {item.name}
               </Text>
-              <Text as="p" className="mb-3 font-normal text-gray-400">
+              <Text as="p" className="font-normal text-gray-600 dark:text-gray-400">
                 {item.text}
               </Text>
             </div>
@@ -83,3 +84,6 @@ const ImageFilter = () => {
 };
 
 export default ImageFilter;
+
+
+
