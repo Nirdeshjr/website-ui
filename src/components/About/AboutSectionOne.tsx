@@ -1,3 +1,4 @@
+"use client";
 import SectionTitle from "../Common/SectionTitle";
 import { useEffect, useRef } from "react";
 
