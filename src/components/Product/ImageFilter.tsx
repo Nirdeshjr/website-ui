@@ -45,8 +45,7 @@ const ImageFilter = () => {
             key={filter}
             onClick={() => handleFilterClick(filter)}
             type="button"
-            className={`focus:outline-none border-2 border-black hover:bg-blue-500 hover:border-blue-500 text-black hover:text-white font-medium rounded-lg text-sm px-5 py-2.5 capitalize ${activeFilter === filter ? 'bg-blue-500 text-white border-blue-500' : 'text-black'
-              }`}
+            className={`focus:outline-none border-2 ${document.documentElement.classList.contains('dark') ? 'border-blue-500' : 'border-black'} ${document.documentElement.classList.contains('dark') ? 'text-white hover:border-blue-500' : 'text-black hover:bg-blue-500 hover:text-white'} font-medium rounded-lg text-sm px-5 py-2.5 capitalize ${activeFilter === filter ? 'bg-blue-500 text-white' : ''}`}
           >
             {filter === 'all' ? 'Show all' : filter}
           </Button>
