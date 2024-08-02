@@ -11,7 +11,7 @@ const ImageFilter = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/gallery/`);
+        const response = await axios.get(`https://backend-4c5c.onrender.com/api/gallery/`);
         const data = response.data;
         setGalleryData(data);
       } catch (error) {
