@@ -56,7 +56,7 @@ const products: ProductType[] = [
 
 const Footer = () => {
   return (
-    <div className="relative overflow-hidden bg-gradient-to-b from-blue-500 to-purple-600 dark:from-gray-800 dark:to-gray-900">
+    <div className="relative overflow-hidden bg-gradient-to-b from-indigo-500 to-purple-600 dark:from-gray-800 dark:to-gray-900">
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 relative z-10">
         <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-6 lg:grid-cols-12">
 
@@ -65,13 +65,13 @@ const Footer = () => {
             <div className="flex items-center">
               <Image src="/assets/footer/logo.png" alt="logo" width={140} height={30} />
             </div>
-            <h3 className="text-xs font-medium text-gray-800 mt-5 mb-4 lg:mb-16 dark:text-gray-300">
+            <h3 className="text-xs font-medium text-gray-200 mt-5 mb-4 lg:mb-16 dark:text-gray-300">
               Elevate Your Digital Experience
             </h3>
             <div className="flex gap-4">
               {socialLinks.map((item, i) => (
                 <Link href={item.link} key={i}>
-                  <div className="bg-white dark:bg-white-900 h-12 w-12 shadow-xl rounded-full flex items-center justify-center hover:bg-ultramarine transition duration-300 ease-in-out">
+                  <div className="bg-white dark:bg-gray-700 h-12 w-12 shadow-xl rounded-full flex items-center justify-center hover:bg-ultramarine transition duration-300 ease-in-out">
                     <Image src={item.imgSrc} alt={item.imgSrc} width={item.width} height={2} />
                   </div>
                 </Link>
@@ -97,11 +97,61 @@ const Footer = () => {
         </div>
 
         {/* All Rights Reserved */}
-        <div className="py-10 flex items-center justify-between border-t border-gray-700 mt-8">
+        <div className="py-10 flex items-center justify-between border-t border-gray-600 mt-8">
           <h4 className="text-gray-300 text-sm text-center md:text-start font-normal dark:text-gray-300">
             @2024.Edit Enterprises. All rights reserved
           </h4>
         </div>
+      </div>
+
+      {/* SVG Decorations */}
+      <div className="absolute left-0 top-0 z-[-1]">
+        <svg
+          width="450"
+          height="450"
+          viewBox="0 0 450 450"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="225" cy="225" r="225" fill="url(#paint0_radial)" />
+          <defs>
+            <radialGradient
+              id="paint0_radial"
+              cx="0"
+              cy="0"
+              r="1"
+              gradientUnits="userSpaceOnUse"
+              gradientTransform="translate(225 225) rotate(90) scale(225)"
+            >
+              <stop stopColor="#4A6CF7" />
+              <stop offset="1" stopColor="#4A6CF7" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+        </svg>
+      </div>
+      <div className="absolute right-0 bottom-0 z-[-1]">
+        <svg
+          width="450"
+          height="450"
+          viewBox="0 0 450 450"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="225" cy="225" r="225" fill="url(#paint1_radial)" />
+          <defs>
+            <radialGradient
+              id="paint1_radial"
+              cx="0"
+              cy="0"
+              r="1"
+              gradientUnits="userSpaceOnUse"
+              gradientTransform="translate(225 225) rotate(90) scale(225)"
+            >
+              <stop stopColor="#4A6CF7" />
+              <stop offset="1" stopColor="#4A6CF7" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+        </svg>
       </div>
     </div>
   );
