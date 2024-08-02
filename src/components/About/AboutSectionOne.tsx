@@ -1,4 +1,5 @@
 "use client";
+
 import SectionTitle from "../Common/SectionTitle";
 import { useEffect, useRef } from "react";
 
@@ -71,3 +72,4 @@ const AboutSectionOne = () => {
 };
 
 export default AboutSectionOne;
+
