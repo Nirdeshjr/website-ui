@@ -42,11 +42,11 @@ const ImageFilter = () => {
           >
             <div className="relative w-full h-60 overflow-hidden rounded-t-lg">
               <Image
-                className="rounded-t-lg transform transition-transform duration-300 hover:scale-105"
-                src={item.image || "/images/about/team.gif"}
-                alt={item.name}
-                layout="fill"
-                objectFit="cover"
+                className="w-full h-40 object-cover mb-3 rounded-t-lg"
+                src={item.image || "/Images/course.png"}
+                alt="Gallery image"
+                width={90}
+                height={70}
               />
               <div className="absolute inset-0 bg-black bg-opacity-25 rounded-t-lg"></div>
             </div>
@@ -65,11 +65,11 @@ const ImageFilter = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75" onClick={closeFullscreenImage}>
           <Image
             src={fullscreenImage}
-            alt="Fullscreen"    
-            layout="responsive"         
-            width={500}                  
-            height={300}                 
-            className="object-cover" 
+            alt="Fullscreen"
+            layout="responsive"
+            width={500}
+            height={300}
+            className="object-cover"
           />
         </div>
       )}
