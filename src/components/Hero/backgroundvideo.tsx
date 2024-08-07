@@ -2,9 +2,9 @@ import React from 'react';
 
 const BackgroundVideo = ({ video }) => {
   return (
-    <div className="absolute inset-0 overflow-hidden z-0">
+    <div className="relative w-full h-auto max-w-[900px]">
       <video
-        className="w-full h-screen object-cover md:w-8/12 md:h-auto"
+        className="w-full h-auto"
         autoPlay
         loop
         muted
