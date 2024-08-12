@@ -13,25 +13,31 @@ const NoticeModal: React.FC<NoticeModalProps> = ({ isOpen, onClose }) => {
     const fetchNoticeData = async () => {
       try {
         const response = await axios.get('https://backend-4c5c.onrender.com/api/notice/');
+        console.log("Response from API:", response.data);
         if (response.data.length > 0) {
           setNoticeData(response.data[0]); // Set the first notice
+        } else {
+          onClose(); // Automatically close the modal if no notice data is returned
         }
         setIsLoading(false);
       } catch (error) {
         console.error("Error while fetching notice data:", error);
         setIsLoading(false);
+        onClose(); // Automatically close the modal if there is an error
       }
     };
 
     fetchNoticeData();
-  }, []);
+  }, [onClose]);
 
   useEffect(() => {
     if (isOpen && noticeData) {
       document.body.style.overflow = "hidden";
+      // Show the notice message with a delay to allow the animation to be visible
       setTimeout(() => {
         setIsVisible(true);
-      }, 100); // Small delay to allow for a smoother transition
+        console.log("Notice message:", noticeData.message);
+      }, 100);
     } else {
       document.body.style.overflow = "auto";
       setIsVisible(false);
@@ -53,18 +59,16 @@ const NoticeModal: React.FC<NoticeModalProps> = ({ isOpen, onClose }) => {
         )}
         {!isLoading && isOpen && noticeData && (
           <>
-            <div className="relative w-full h-0 pb-56">
-              {noticeData.notice_image && (
-                <Image
-                  src={noticeData.notice_image}
-                  alt="Notice"
-                  layout="fill"
-                  objectFit="cover"
-                  className="absolute top-0 left-0 w-full h-full"
-                  onLoad={() => setIsVisible(true)} // Set visibility to true as soon as the image loads
-                />
-              )}
-            </div>
+            {noticeData.notice_image && (
+              <Image
+                src={noticeData.notice_image}
+                alt="Notice"
+                layout="responsive"
+                width={500}
+                height={300}
+                className="object-cover"
+              />
+            )}
             <button className="absolute top-2 right-2 focus:outline-none z-10" onClick={closeModal}>
               <div className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-300 hover:bg-gray-400 transition-colors">
                 <svg
@@ -79,9 +83,7 @@ const NoticeModal: React.FC<NoticeModalProps> = ({ isOpen, onClose }) => {
               </div>
             </button>
             <div className={`p-6 md:p-8 lg:p-10 overflow-y-auto max-h-[80vh] ${isVisible ? "visible" : ""}`}>
-              <p className={`text-lg lg:text-xl xl:text-2xl mb-6 ${isVisible ? "visible" : ""} dark:text-black`}>
-                {noticeData.message}
-              </p>
+              <p className={`text-lg lg:text-xl xl:text-2xl mb-6 ${isVisible ? "visible" : ""} dark:text-black`}>{noticeData.message}</p>
               <button className="block w-full bg-primary text-white py-3 px-6 rounded-md text-center font-semibold hover:bg-primary-dark transition duration-300" onClick={closeModal}>
                 Close
               </button>
@@ -94,6 +96,7 @@ const NoticeModal: React.FC<NoticeModalProps> = ({ isOpen, onClose }) => {
 };
 
 export default NoticeModal;
+
 
 
 
