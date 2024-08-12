@@ -10,7 +10,8 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'backend-4c5c.onrender.com', // Add your backend URL here if needed
+        hostname: 'backend-4c5c.onrender.com',
+        pathname: '/**', // Allow all paths on this domain // Add your backend URL here if needed
       },
     ],
     // Use domains for local development domains
